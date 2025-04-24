@@ -12,9 +12,12 @@ namespace WalletApi.Application
     {
         public Mapping()
         {
-        
+
+            // Mapeo para Wallet
             CreateMap<WalletDTO,Wallet>().ForAllMembers(opts => opts.Condition((src, Dest, srcMember) => srcMember != null));
             CreateMap<Wallet,WalletDTO>();
+
+            // Mapeo para Transaction
             CreateMap<TransactionDTO, Transaction>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
             CreateMap<Transaction, TransactionDTO>();
