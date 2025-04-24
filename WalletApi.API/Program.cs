@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using WalletApi.Application.Interface;
+using WalletApi.Application.Service;
 using WalletApi.Application.UnitOfWork;
 using WalletApi.Domain.Interface;
 using WalletApi.Domain.Service;
@@ -17,6 +19,7 @@ builder.Services.AddDbContext<WalletdigitaldbContext>(options =>
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IWalletService, WalletService>();
+builder.Services.AddScoped<ITransactionService, TransactionsService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 

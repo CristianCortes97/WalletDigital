@@ -6,7 +6,7 @@ namespace WalletApi.Application.UnitOfWork
     {
 
         IRepository<TEntity> Repository<TEntity>() where TEntity : class;
-        //ITransactionRepository<TEntity> ITransactionRepository<TEntity>() where TEntity : class;
+        //ITransactionService<TEntity> ITransactionRepository<TEntity>() where TEntity : class;
         Task<int> SaveChangesAsync();
     }
 }

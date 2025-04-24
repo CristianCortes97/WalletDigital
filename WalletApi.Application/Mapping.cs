@@ -15,6 +15,9 @@ namespace WalletApi.Application
         
             CreateMap<WalletDTO,Wallet>().ForAllMembers(opts => opts.Condition((src, Dest, srcMember) => srcMember != null));
             CreateMap<Wallet,WalletDTO>();
+            CreateMap<TransactionDTO, Transaction>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+            CreateMap<Transaction, TransactionDTO>();
         } 
     }
 }

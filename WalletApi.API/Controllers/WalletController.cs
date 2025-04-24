@@ -22,36 +22,99 @@ namespace WalletApi.API.Controllers
 
         [HttpGet("GetAll")]
         public async Task<ActionResult<Response<IEnumerable<WalletDTO>>>> GetAsync()
-        {
-            return Ok(await _walletService.GetAllWalletsAsync());
+        {        
+            var result = await _walletService.GetAllWalletsAsync();
+
+            if (result.Errors != null && result.Errors.Any())
+            {
+
+                var firstError = result.Errors.First();
+                return StatusCode(firstError.StatusCode, result);
+            }
+
+            return Ok(result);
+
         }
 
-        [HttpGet("GetWalletByIdAsync")]
+        [HttpGet("GetWalletByIdAsync/{id}")]
         public async Task<ActionResult<Response<IEnumerable<WalletDTO>>>> GetWalletByIdAsync(int id)
-        {
-            return Ok(await _walletService.GetWalletByIdAsync(id));
+        {     
+            var result = await _walletService.GetWalletByIdAsync(id);
+
+            if (result.Errors != null && result.Errors.Any())
+            {
+
+                var firstError = result.Errors.First();
+                return StatusCode(firstError.StatusCode, result);
+            }
+
+            return Ok(result);
         }
 
 
         [HttpPost("Create")]
         public async Task<ActionResult<Response<IEnumerable<WalletDTO>>>> Create(WalletDTO createWalletDto)
         {
-            return Ok(await _walletService.CreateWalletAsync(createWalletDto));
+            var result = await _walletService.CreateWalletAsync(createWalletDto);
+
+            if (result.Errors != null && result.Errors.Any())
+            {
+        
+                var firstError = result.Errors.First();
+                return StatusCode(firstError.StatusCode, result);
+            }
+
+         
+            return Ok(result);
+
         }
 
 
         [HttpPut("Update")]
         public async Task<ActionResult<Response<IEnumerable<WalletDTO>>>> Update(WalletDTO createWalletDto)
-        {
-            return Ok(await _walletService.UpdateWalletAsync(createWalletDto));
+        {          
+            var result = await _walletService.UpdateWalletAsync(createWalletDto);
+
+            if (result.Errors != null && result.Errors.Any())
+            {
+
+                var firstError = result.Errors.First();
+                return StatusCode(firstError.StatusCode, result);
+            }
+
+
+            return Ok(result);
         }
 
         [HttpDelete("Delete")]
         public async Task<ActionResult<Response<IEnumerable<WalletDTO>>>> Delete(int id)
-        {
-            return Ok(await _walletService.DeleteWalletAsync(id));
+        {       
+            var result = await _walletService.DeleteWalletAsync(id);
+
+            if (result.Errors != null && result.Errors.Any())
+            {
+
+                var firstError = result.Errors.First();
+                return StatusCode(firstError.StatusCode, result);
+            }
+
+
+            return Ok(result);
         }
 
+        [HttpPost("TransferFunds")]
+        public async Task<ActionResult<Response<bool>>> TransferFunds(int sourceWalletId, int destinationWalletId, decimal amount)
+        {
+            var result = await _walletService.TransferFundsAsync(sourceWalletId, destinationWalletId, amount);
+
+            if (result.Errors != null && result.Errors.Any())
+            {        
+                var firstError = result.Errors.First();
+                return StatusCode(firstError.StatusCode, result);
+            }
+
+            return Ok(result);
+        }
 
     }
 }
