@@ -13,6 +13,8 @@ namespace WalletApi.Domain.Interface
         Task<Response<IEnumerable<WalletDTO>>> GetAllWalletsAsync();
         Task<Response<IEnumerable<WalletDTO>>> GetWalletByIdAsync(int id);
         Task<Response<WalletDTO>> CreateWalletAsync(WalletDTO createWalletDto);
+
+        Task<Response<bool>> TransferFundsAsync( int sourceWalletId,  int destinationWalletId, decimal amount);
         Task<Response<WalletDTO>>UpdateWalletAsync(WalletDTO updateWalletDto);
         Task<Response<WalletDTO>>DeleteWalletAsync(int id);
     }

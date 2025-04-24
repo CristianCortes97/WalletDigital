@@ -82,7 +82,7 @@ namespace WalletApi.Application.Repository
                 query = query.Include(includeProperty);
             }
 
-           
+            // Aplicar ordenamiento si existe
             if (orderBy != null)
             {
                 return orderBy(query);
@@ -101,5 +101,9 @@ namespace WalletApi.Application.Repository
            
         }
 
+        public Task<IEnumerable<T>> GetTransactionsByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

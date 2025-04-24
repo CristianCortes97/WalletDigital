@@ -16,6 +16,8 @@ namespace WalletApi.Application.Interface
             string includeProperties = "",
             bool?  tracking = false
         );
+
+        Task<IEnumerable<T>> GetTransactionsByIdAsync(int id);
         Task CreateAsync(T entity);
         void UpdateAsync(T entity);
         void DeleteAsync(T _entity);

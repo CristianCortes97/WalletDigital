@@ -9,6 +9,7 @@ namespace WalletApi.Domain.GenericModels
     public class Response<T>
     {
         public T? Body { get; set; }
+        public string? Message {get; set; }
 
         public IEnumerable<Error>? Errors { get; set; } 
 
