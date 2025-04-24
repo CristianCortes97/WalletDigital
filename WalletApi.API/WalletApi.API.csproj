@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WalletApi.Application\WalletApi.Application.csproj" />
-    <ProjectReference Include="..\WalletApi.Domain\WalletApi.Domain.csproj" />
     <ProjectReference Include="..\WalletApi.Infraestructure\WalletApi.Infraestructure.csproj" />
   </ItemGroup>
 
